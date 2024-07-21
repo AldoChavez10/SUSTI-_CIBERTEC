@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Pacientes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:wght@400;700&family=Roboto:wght@300;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.2/font/bootstrap-icons.min.css">
+    <style>
+        body {
+            background-image: url('https://image.slidesdocs.com/responsive-images/background/hospital-sign-adorns-contemporary-glass-skyscraper-depicting-cutting-edge-health-clinic-emergency-healthcare-and-medical-idea-through-3d-visualization-powerpoint-background_5cdf4feea4__960_540.jpg'); /* Fondo de la página */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            width: 100vw;
+            text-align: center;
+            filter: brightness(0.9);
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            width: 90%;
+        }
+
+        h1 {
+            font-family: 'Lobster', cursive;
+            font-size: 2.5rem;
+            color: #28a745; 
+        }
+
+        .bi-person-lines-fill {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .table {
+            margin-top: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+        }
+
+        .table th, .table td {
+            padding: 12px 15px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .table th {
+            background-color: #28a745; 
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .btn-return {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #007bff; 
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1em;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-return:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .btn-return i {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><i class="bi bi-person-lines-fill"></i> Información de Pacientes</h1>
+        <table id="patients-table" class="table table-hover">
+            <thead>
+                <tr>
+                    <th><i class="bi bi-hash"></i> Código</th>
+                    <th><i class="bi bi-person"></i> Apellido Paterno</th>
+                    <th><i class="bi bi-person"></i> Apellido Materno</th>
+                    <th><i class="bi bi-person"></i> Nombres</th>
+                    <th><i class="bi bi-credit-card"></i> DNI</th>
+                    <th><i class="bi bi-bar-chart"></i> Peso</th>
+                    <th><i class="bi bi-rulers"></i> Talla</th>
+                    <th><i class="bi bi-clipboard-data"></i> IMC</th>
+                    <th><i class="bi bi-briefcase"></i> Consulta</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                @for (paciente of pacientes; track paciente.idPaciente) {
+                    <tr>
+                        <td>{{ paciente.id }}</td>
+                        <td>{{ paciente.apellidoPaterno }}</td>
+                        <td>{{ paciente.apellidoMaterno }}</td>
+                        <td>{{ paciente.nombres }}</td>
+                        <td>{{ paciente.dni }}</td>
+                        <td>{{ paciente.peso }}</td>
+                        <td>{{ paciente.talla }}</td>
+                        <td>{{ paciente.imc }}</td>
+                        <td>{{ paciente.consulta }}</td> 
+                    </tr>
+                }
+            </tbody>
+        </table>
+     
+        <a class="btn-return" href="http://localhost:8090">
+            <i class="bi bi-house-door"></i> Regresar a Registrar Atención
+        </a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12kWNUZOfQKY2T2mSI1eAgSJ9OA7f0GBlCBdCmE8ykqpf8pL" crossorigin="anonymous"></script>
+</body>
+</html>
